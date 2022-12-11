@@ -1,0 +1,113 @@
+@import url("./global.less");
+
+.container {
+    display: flex;
+    flex-wrap: wrap;
+    height: 100vh;
+
+    .form_container {
+        flex: 1.5;
+
+        #login_form {
+            .box_container;
+            box-sizing: border-box;
+            color: @font_color;
+            margin: 70px auto;
+            padding: 40px;
+            width: 450px;
+
+            h3 {
+                color: @primary_color;
+                font-weight: 900;
+                margin-top: 0;
+            }
+
+            h1 {
+                font-weight: 900;
+                margin-bottom: 30px;
+                margin-top: 40px;
+            }
+            
+            .form_group {
+                margin-block: 20px;
+
+                & > label {
+                    display: block;
+                    margin-bottom: 10px;
+                }
+
+                .forgot_password_container {
+                    align-items: flex-end;
+                    display: flex;
+                    justify-content: space-between;
+                    margin-bottom: 10px;
+
+                    a {
+                        color: fade(@black, 50%);
+                        font-size: 14px;
+                        text-decoration: none;
+                    }
+                }
+
+                input {
+                    background-color: fade(@primary_color, 8%);
+                    border-radius: 4px;
+                    border: none;
+                    box-sizing: border-box;
+                    color: @font_color;
+                    height: 55px;
+                    padding-inline: 20px;
+                    width: 370px;
+                }
+
+                .error_message {
+                    color: @error_color;
+                    font-size: 14px;
+                    margin-block: 5px;
+                    visibility: hidden;
+                }
+
+                .show_error_message {
+                    visibility: visible;
+                }
+
+                .show_error_color {
+                    background-color: fade(@error_color, 8%);
+                }
+            }
+
+            button {
+                .button;
+                border-radius: 4px;
+                display: block;
+                margin: 20px auto;
+                padding: 15px 40px;
+            }
+
+            p {
+                color: fade(@black, 20%);
+                margin-bottom: 0;
+                margin-top: 40px;
+                text-align: center;
+
+                a {
+                    color: @primary_color;
+                    font-weight: 900;
+                    text-decoration: none;
+                }
+            }
+        }
+    }
+
+    .illustration_container {
+        background-color: fade(@primary_color, 51%);
+        flex: 1;
+        position: relative;
+
+        img {
+            left: -70px;
+            position: absolute;
+            top: 160px;
+        }
+    }
+}

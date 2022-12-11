@@ -1,0 +1,22 @@
+@font-face {
+  font-family: Poppins;
+  src: url("../fonts/Poppins-Regular.ttf");
+}
+* {
+  font-family: Poppins;
+}
+body {
+  background-color: #fbfbfb;
+}
+.button {
+  background-color: #2c6bff;
+  border: none;
+  color: #fff;
+  cursor: pointer;
+  font-weight: 900;
+}
+.box_container {
+  background-color: #fff;
+  border-radius: 6px;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.05);
+}

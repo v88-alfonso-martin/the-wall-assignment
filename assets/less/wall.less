@@ -1,0 +1,262 @@
+@import url("./global.less");
+
+.cancel_button {
+    color: fade(@black, 60%);
+    cursor: pointer;
+    margin-right: 24px;
+    text-decoration: none;
+}
+
+.success_button {
+    .button;
+    border-radius: 6px;
+    padding: 10px 30px;
+}
+
+.hide_no_messages,
+.hide_message_actions,
+.hide_buttons_container {
+    visibility: hidden;
+}
+
+.hide_form {
+    display: none;
+}
+
+.disable_button {
+    background-color: @primary_color;
+    opacity: 50%;
+}
+
+.bordered_container {
+    border-radius: 6px;
+    border: 1px solid @border_color;
+    box-sizing: border-box;
+    margin-bottom: 25px;
+    min-height: 144px;
+    padding: 30px;
+}
+
+.actions_container {
+    align-items: center;
+    display: flex;
+    justify-content: space-between;
+}
+
+textarea{
+    border: none;
+    box-sizing: border-box;
+    color: @font_color;
+    height: 45px;
+    margin-bottom: 15px;
+    resize: none;
+    width: 100%;
+
+    &:disabled {
+        background-color: white;
+        color: @font_color;
+    }
+}
+
+.textarea {
+    background-color: @textarea_color;
+    border-radius: 6px;
+    border: 1px solid @border_color;
+    box-sizing: border-box;
+    padding: 10px;
+    resize: none;
+    width: 100%;  
+}
+
+.enable_textarea {
+    .textarea;
+    height: 84px;
+}
+
+.message_actions {
+    display: flex;
+    list-style: none;
+    margin: 0;
+    padding-left: 0;
+
+    li {
+        align-items: center;
+        color: @actions_font_color;
+        cursor: pointer;
+        display: flex;
+        margin-right: 20px;
+
+        .blue_text {
+            color: @primary_color;
+        }
+
+        span {
+            span {
+                font-weight: 900;
+                margin-left: 5px;
+            }
+        }
+
+        &:last-child {
+            cursor: auto;
+        }
+    }
+}
+
+header {
+    .box_container;
+    align-items: center;
+    color: @font_color;
+    display: flex;
+    height: 121px;
+    justify-content: space-between;
+    padding-inline: 78px;
+
+    nav {
+        align-items: center;
+        display: flex;
+
+        a {
+            color: @primary_color;
+            font-weight: bold;
+            margin-left: 16px;
+            text-decoration: none;
+        }
+    }
+}
+
+main {
+    .box_container;
+    margin: 50px 78px;
+    min-height: 1035px;
+    padding: 58px 68px;
+
+    .main_header {
+        align-items: center;
+        display: flex;
+        justify-content: space-between;
+        margin-bottom: 30px;
+
+        p {
+            color: @actions_font_color;
+        }
+
+        #messages_length {
+            color: @primary_color;
+            font-weight: 900;
+        }
+
+        #create_message_button {
+            .button;
+            border-radius: 6px;
+            cursor: pointer;
+            padding: 10px 30px;
+        }
+    }
+
+    #messages_container {
+        .message_container {
+            .bordered_container;
+
+            .post_comment_form {
+                .bordered_container;
+                margin-top: 25px;
+                text-align: right;
+            }
+            .comment_container {
+                .bordered_container;
+            }
+        }
+    }
+
+    #no_messages {
+        align-items: center;
+        color: @actions_font_color;
+        display: flex;
+        flex-direction: column;
+        flex: 1;
+        justify-content: center;
+        margin-top: 126px;
+
+        p {
+            margin-top: 30px;
+        }
+    }
+}
+
+
+.delete_message_modal,
+.create_message_modal,
+.delete_comment_modal {
+	background-color: fade(@black, 50%);
+	height: 100%;
+	left: 0;
+	top: 0;
+	visibility: hidden;
+	width: 100%;
+    align-items: center;
+    display: flex;
+    justify-content: center;
+    position: fixed;
+
+    .modal_container {
+		box-sizing: border-box;
+		min-height: 307px;
+		padding: 15px;
+		text-align: center;
+		word-wrap: break-word;
+        .box_container;
+        color: @font_color;
+        flex: 1;
+        max-width: 937px;
+        padding: 50px;
+        position: relative;
+
+        .close_button {
+            cursor: pointer;
+            position: absolute;
+            right: 10px;
+            top: 10px;
+        }
+
+        h2 {
+            margin-bottom: 40px;
+            margin-top: 0;
+        }
+
+        p {
+            line-height: normal;
+            padding-inline: 20px;
+        }
+
+        textarea {
+            .textarea;
+            margin-bottom: 30px;
+            min-height: 185px;
+        }
+
+        .buttons_container {
+            text-align: right;
+        }
+    }
+}
+
+.delete_message_modal,
+.delete_comment_modal {
+    .modal_container {
+        max-width: 540px;
+
+        .buttons_container {
+            margin-top: 40px;
+            text-align: center;
+        
+            .success_button {
+                padding: 15px 40px;
+            }
+        }
+    }
+}
+
+.show_modal {
+    visibility: visible;
+}

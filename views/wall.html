@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/x-icon" href="../assets/images/Group_2019.png">
+    <meta name="description" content="The Wall View of the wall assignment">
+    <meta name="author" content="Alfonso Martin B. Angeles">
+    <link rel="stylesheet" href="../assets/css/normalize.css">
+    <link rel="stylesheet" href="../assets/css/wall.css">
+    <script src="../assets/js/wall.js" defer></script>
+    <title>The Wall | Wall View</title>
+</head>
+<body>
+    <header>
+        <h2>The Wall Assignment</h2>
+        <nav>
+            <p>Welcome, Alfonso Martin B. Angeles!</p>
+            <a href="./index.html">Logout</a>
+        </nav>
+    </header>
+    <main>
+        <div class="main_header">
+            <p><span id="messages_length">0</span> messages arranged by latest posted</p>
+            <button id="create_message_button" type="button">Create Message</button>
+        </div>
+        <div id="messages_container"></div>
+        <div id="no_messages">
+            <img src="../assets/images/empty.png" alt="Empty Icon">
+            <p>No Posted Message Yet.</p>
+        </div>
+    </main>
+
+    <!-- Modals -->
+    <div class="modal create_message_modal">
+        <div class="modal_container">
+            <img class="close_button" src="../assets/images/cancel.png" alt="Cancel icon">
+            <h2>Create a Message</h2>
+            <form method="post" id="create_message_form">
+                <textarea name="message" placeholder="Type your message here."></textarea>
+                <div class="buttons_container">
+                    <a class="cancel_button">Cancel</a>
+                    <button type="submit" class="success_button disable_button" disabled>Post Message</button>
+                </div>
+            </form>
+        </div>
+    </div>
+    <div class="modal delete_message_modal">
+        <div class="modal_container">
+            <img class="close_button" src="../assets/images/cancel.png" alt="Cancel icon">
+            <form method="post" id="delete_message_form">
+                <h2>Confirm Delete Message</h2>
+                <p>Are you sure you want to remove this message? This action cannot be undone.</p>
+                <div class="buttons_container">
+                    <a class="cancel_button">Cancel</a>
+                    <button type="submit" class="success_button">Yes, Remove it.</button>
+                </div>
+            </form>
+        </div>
+    </div>
+    <div class="modal delete_comment_modal">
+        <div class="modal_container">
+            <img class="close_button" src="../assets/images/cancel.png" alt="Cancel icon">
+            <form method="post" id="delete_comment_form">
+                <h2>Confirm Delete Comment</h2>
+                <p>Are you sure you want to remove this message? This action cannot be undone.</p>
+                <div class="buttons_container">
+                    <a class="cancel_button">Cancel</a>
+                    <button class="success_button">Yes, Remove it.</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Cloned elements --> 
+    <div hidden class="message_container">
+        <form class="edit_message_form">
+            <!-- enable_textarea -->
+            <textarea class="textarea_post" name="post" placeholder="Type your message here." disabled></textarea>
+            <div class="actions_container">
+                <ul class="message_actions">
+                    <li class="comment_action">
+                        <img src="../assets/images/messages-bubble-square-text.png" alt="Comment Icon">
+                        <span class="comment_length">0 Comment</span> 
+                    </li>
+                    <li class="edit_action"><img src="../assets/images/pencil-write.png" alt="Edit Icon"> <span class="blue_text">Edit</span></li>
+                    <li class="delete_action"><img src="../assets/images/delete.png" alt="Delete Icon"> <span>Delete</span></li> 
+                    <li><img src="../assets/images/User-Placeholder.png" alt="User Icon"> <span><span>You</span> - Few seconds ago</span></li>
+                </ul>
+                <!-- hidden later -->
+                <div class="hide_buttons_container">
+                    <a class="cancel_button">Cancel</a>
+                    <button type="submit" class="success_button edit_button">Update Message</button>
+                </div>
+            </div>
+        </form>  
+        <form class="post_comment_form hide_form">
+            <textarea class="enable_textarea" name="comment" placeholder="Type your comment here."></textarea>
+            <button type="submit" class="success_button disable_button" disabled>Post Comment</button>
+        </form> 
+       <div class="comments_container"></div>
+   </div> 
+
+   <div hidden class="comment_container">
+    <form class="edit_comment_form">
+        <textarea class="textarea_comment" name="post_comment" placeholder="Type your message here." disabled></textarea>
+        <div class="actions_container">
+            <ul class="message_actions">
+                <li class="edit_action">
+                    <img src="../assets/images/pencil-write.png" alt="Edit Icon"> 
+                    <span class="blue_text">Edit</span>
+                </li>
+                <li class="delete_action">
+                    <img src="../assets/images/delete.png" alt="Delete Icon"> 
+                    <span>Delete</span>
+                </li> 
+                <li>
+                    <img src="../assets/images/User-Placeholder.png" alt="User Icon"> 
+                    <span><span>You</span> - Few seconds ago</span>
+                </li>
+            </ul>
+            <div class="hide_buttons_container"> 
+                <a class="cancel_button">Cancel</a>
+                <button type="submit" class="success_button">Update Message</button>
+            </div>
+        </div>
+    </form> 
+</div>
+</body>
+</html>
