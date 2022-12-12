@@ -17,21 +17,21 @@ for (const modal of modals) {
 }
 
 create_message_button.addEventListener("click", openCreateMessageModal);
-create_message_form.addEventListener("keyup", validateFormMessage)
+create_message_form.addEventListener("keyup", validateFormMessage);
 create_message_form.addEventListener("submit", submitMessage);
 
 function closeModal(event) {
     let modal = event.target.closest(".show_modal");
     modal.classList.remove("show_modal");
     create_message_form.reset();
-    let success_button = create_message_form.lastElementChild.lastElementChild
+    let success_button = create_message_form.lastElementChild.lastElementChild;
     success_button.disabled = true;
     success_button.classList.add("disable_button");
 }
 
 function closeModalWhenClickedOutside(event) {
     if(event.target === event.currentTarget) {
-        closeModal(event)
+        closeModal(event);
     }
 }
 
@@ -76,7 +76,7 @@ function submitMessage(event) {
 
     const edit_message_form = cloned_message_container.querySelector(".edit_message_form")
     edit_message_form.addEventListener("keyup", validateEditMessage);
-    cloned_message_container.querySelector(".edit_message_form .cancel_button").addEventListener("click", cancelEditMessage)
+    cloned_message_container.querySelector(".edit_message_form .cancel_button").addEventListener("click", cancelEditMessage);
     edit_message_form.addEventListener("submit", submitEditMessage);
 
     /* Comment action */
@@ -158,10 +158,10 @@ function toggleCommentForm(event) {
     event.currentTarget.lastElementChild.classList.toggle("blue_text");
     const img = event.currentTarget.firstElementChild;
     if(img.getAttribute("src") === "../assets/images/messages-bubble-square-text.png"){
-        img.setAttribute("src", "../assets/images/messages-bubble-square-text-blue.png")
+        img.setAttribute("src", "../assets/images/messages-bubble-square-text-blue.png");
     }
     else {
-        img.setAttribute("src", "../assets/images/messages-bubble-square-text.png")
+        img.setAttribute("src", "../assets/images/messages-bubble-square-text.png");
     }
     post_comment_form.comment.focus();
     post_comment_form.nextElementSibling.classList.toggle("hide_comments_container");
