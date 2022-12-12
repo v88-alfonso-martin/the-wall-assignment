@@ -47,7 +47,7 @@ function validateFormMessage(event) {
         success_button.disabled = true;
         success_button.classList.add("disable_button");
     } 
-    else {
+    else{
         success_button.disabled = false;
         success_button.classList.remove("disable_button");
     }
@@ -126,7 +126,7 @@ function validateEditMessage(event) {
         success_button.disabled = true;
         success_button.classList.add("disable_button");
     } 
-    else {
+    else{
         success_button.disabled = false;
         success_button.classList.remove("disable_button");
     }
@@ -160,7 +160,7 @@ function toggleCommentForm(event) {
     if(img.getAttribute("src") === "../assets/images/messages-bubble-square-text.png"){
         img.setAttribute("src", "../assets/images/messages-bubble-square-text-blue.png");
     }
-    else {
+    else{
         img.setAttribute("src", "../assets/images/messages-bubble-square-text.png");
     }
     post_comment_form.comment.focus();
@@ -173,7 +173,7 @@ function validateFormComment(event) {
         success_button.disabled = true;
         success_button.classList.add("disable_button");
     } 
-    else {
+    else{
         success_button.disabled = false;
         success_button.classList.remove("disable_button");
     }
@@ -238,7 +238,7 @@ function validateEditComment(event) {
         success_button.disabled = true;
         success_button.classList.add("disable_button");
     } 
-    else {
+    else{
         success_button.disabled = false;
         success_button.classList.remove("disable_button");
     }
