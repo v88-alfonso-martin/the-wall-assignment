@@ -164,6 +164,7 @@ function toggleCommentForm(event) {
         img.setAttribute("src", "../assets/images/messages-bubble-square-text.png")
     }
     post_comment_form.comment.focus();
+    post_comment_form.nextElementSibling.classList.toggle("hide_comments_container");
 }
 
 function validateFormComment(event) {
