@@ -38,7 +38,6 @@ function registerUser(event) {
 
     let error = 0;
     for (const element of form) {
-        console.log(2);
         if(element.classList.contains("show_error_color")) {
             error+=1;
             break;
