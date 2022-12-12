@@ -85,7 +85,7 @@ function submitMessage(event) {
     post_comment_form.addEventListener("submit", submitComment);
 
     if(messages_container.childElementCount >= 1) {
-        no_messages.classList.add("hide_no_messages")
+        no_messages.id = "hide_no_messages";
     }
 }
 
@@ -105,7 +105,7 @@ function deleteMessage(event) {
     modal.classList.remove("show_modal");
 
     if(messages_container.childElementCount === 0) {
-        no_messages.classList.remove("hide_no_messages")
+        no_messages.id = "no_messages";
     }
 }
 

@@ -35,7 +35,6 @@ body {
   border-radius: 6px;
   padding: 10px 30px;
 }
-.hide_no_messages,
 .hide_message_actions,
 .hide_buttons_container {
   visibility: hidden;
@@ -281,11 +280,16 @@ main #no_messages p {
 .delete_comment_modal .modal_container .buttons_container {
   margin-top: 40px;
   text-align: center;
+  padding-left: 40px;
 }
 .delete_message_modal .modal_container .buttons_container .success_button,
 .delete_comment_modal .modal_container .buttons_container .success_button {
+  margin-left: 50px;
   padding: 15px 40px;
 }
 .show_modal {
   visibility: visible;
+}
+#hide_no_messages {
+  display: none;
 }
