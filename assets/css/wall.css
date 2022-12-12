@@ -69,7 +69,7 @@ textarea {
   width: 100%;
 }
 textarea:disabled {
-  background-color: white;
+  background-color: #fff;
   color: #152c61;
 }
 .textarea {
@@ -293,4 +293,68 @@ main #no_messages p {
 .hide_comments_container,
 #hide_no_messages {
   display: none;
+}
+@media only screen and (max-width: 480px) {
+  .actions_container {
+    align-items: flex-start;
+    display: flex;
+    flex-direction: column-reverse;
+  }
+  .message_actions {
+    display: flex;
+    flex-direction: column;
+  }
+  .message_actions li {
+    align-items: center;
+    justify-content: flex-start;
+  }
+  header {
+    padding-inline: 10px;
+  }
+  header nav {
+    align-items: flex-end;
+    flex-direction: column;
+    text-align: right;
+  }
+  header nav a {
+    margin-left: 0;
+  }
+  main {
+    margin: 20px 10px;
+    padding: 10px;
+  }
+  main #messages_container .message_container {
+    padding: 10px;
+  }
+  .delete_message_modal .modal_container,
+  .create_message_modal .modal_container,
+  .delete_comment_modal .modal_container {
+    margin: 10px;
+    padding: 50px 20px;
+  }
+  .delete_message_modal .modal_container textarea,
+  .create_message_modal .modal_container textarea,
+  .delete_comment_modal .modal_container textarea {
+    min-height: 100px;
+  }
+  .delete_message_modal .modal_container .buttons_container,
+  .create_message_modal .modal_container .buttons_container,
+  .delete_comment_modal .modal_container .buttons_container {
+    text-align: right;
+  }
+  .delete_message_modal .modal_container,
+  .delete_comment_modal .modal_container {
+    max-width: 540px;
+  }
+  .delete_message_modal .modal_container .buttons_container,
+  .delete_comment_modal .modal_container .buttons_container {
+    margin-top: 40px;
+    padding-left: 0;
+    text-align: center;
+  }
+  .delete_message_modal .modal_container .buttons_container .success_button,
+  .delete_comment_modal .modal_container .buttons_container .success_button {
+    margin-left: 0;
+    padding: 15px 40px;
+  }
 }

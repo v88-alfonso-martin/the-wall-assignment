@@ -52,7 +52,7 @@ textarea{
     width: 100%;
 
     &:disabled {
-        background-color: white;
+        background-color: @white;
         color: @font_color;
     }
 }
@@ -264,4 +264,84 @@ main {
 .hide_comments_container,
 #hide_no_messages {
     display: none;
+}
+
+
+@media only screen and (max-width: 480px){
+    .actions_container {
+        align-items: flex-start;
+        display: flex;
+        flex-direction: column-reverse;
+    }
+
+    .message_actions {
+        display: flex;
+        flex-direction: column;
+    
+        li {
+            align-items: center;
+            justify-content: flex-start;
+        }
+    }
+
+    header {
+        padding-inline: 10px;
+
+        nav {
+            align-items: flex-end;
+            flex-direction: column;
+            text-align: right;
+
+            a {
+                margin-left: 0;
+            }
+        }
+    }
+
+    main {
+        margin: 20px 10px;
+        padding: 10px;
+
+        #messages_container {
+            .message_container {
+                padding: 10px;    
+            }
+        }
+    }
+
+
+.delete_message_modal,
+.create_message_modal,
+.delete_comment_modal {
+    .modal_container {
+        margin: 10px;
+        padding: 50px 20px;
+
+        textarea {
+            min-height: 100px;
+        }
+
+        .buttons_container {
+            text-align: right;
+        }
+    }
+}
+
+.delete_message_modal,
+.delete_comment_modal {
+    .modal_container {
+        max-width: 540px;
+
+        .buttons_container {
+            margin-top: 40px;
+            padding-left: 0;
+            text-align: center;
+        
+            .success_button {
+                margin-left: 0;
+                padding: 15px 40px;
+            }
+        }
+    }
+}
 }

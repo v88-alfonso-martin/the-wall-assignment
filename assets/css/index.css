@@ -22,7 +22,6 @@ body {
 }
 .container {
   display: flex;
-  flex-wrap: wrap;
   height: 100vh;
 }
 .container .form_container {
@@ -74,7 +73,7 @@ body {
   color: #152c61;
   height: 55px;
   padding-inline: 20px;
-  width: 370px;
+  width: 100%;
 }
 .container .form_container #login_form .form_group .error_message {
   color: #e1554c;
@@ -118,4 +117,22 @@ body {
   left: -70px;
   position: absolute;
   top: 160px;
+}
+@media only screen and (max-width: 480px) {
+  body {
+    background-color: rgba(44, 107, 255, 0.51);
+  }
+  .container {
+    align-items: center;
+  }
+  .container .form_container {
+    margin: 20px;
+  }
+  .container .form_container #login_form {
+    margin: 0;
+    width: 100%;
+  }
+  .container .illustration_container {
+    display: none;
+  }
 }
