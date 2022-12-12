@@ -36,7 +36,9 @@ function closeModalWhenClickedOutside(event) {
 }
 
 function openCreateMessageModal() {
-    document.querySelector(".create_message_modal").classList.add("show_modal");
+    let create_message_modal = document.querySelector(".create_message_modal");
+    create_message_modal.classList.add("show_modal");
+    create_message_modal.querySelector("#create_message_form textarea").focus();
 }
 
 function validateFormMessage(event) {
@@ -65,7 +67,6 @@ function submitMessage(event) {
     messages_container.prepend(cloned_message_container);
     messages_length.innerHTML = messages_container.childElementCount;
     closeModal(event);
-
 
     /* Delete action */
     cloned_message_container.querySelector(".edit_message_form .delete_action").addEventListener("click", showDeleteModal);
@@ -116,6 +117,7 @@ function enableEditMessage (event) {
     form.post.dataset.oldMessage = form.post.value;
     event.currentTarget.parentNode.classList.add("hide_message_actions");
     event.currentTarget.parentNode.nextElementSibling.classList.remove("hide_buttons_container");
+    form.post.focus();
 }
 
 function validateEditMessage(event) {
@@ -161,6 +163,7 @@ function toggleCommentForm(event) {
     else {
         img.setAttribute("src", "../assets/images/messages-bubble-square-text.png")
     }
+    post_comment_form.comment.focus();
 }
 
 function validateFormComment(event) {
@@ -225,6 +228,7 @@ function enableEditComment (event) {
     form.post_comment.dataset.oldMessage = form.post_comment.value;
     event.currentTarget.parentNode.classList.add("hide_message_actions");
     event.currentTarget.parentNode.nextElementSibling.classList.remove("hide_buttons_container");
+    form.post_comment.focus();
 }
 
 function validateEditComment(event) {
