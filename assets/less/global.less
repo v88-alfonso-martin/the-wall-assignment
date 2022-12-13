@@ -1,12 +1,12 @@
+@actions_font_color: #707070;
 @background_color: #fbfbfb;
+@black: #000;
+@border_color: #dce6ff;
+@error_color: #e1554c;
 @font_color :#152c61;
 @primary_color: #2c6bff;
-@white: #fff;
-@black: #000;
-@error_color: #e1554c;
 @textarea_color: #f5f8ff;
-@border_color: #dce6ff;
-@actions_font_color: #707070;
+@white: #fff;
 
 @font-face {
     font-family: Poppins;
@@ -33,4 +33,41 @@ body {
     background-color: @white;
     border-radius: 6px;
     box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.05);
+}
+
+.bordered_container {
+    border-radius: 6px;
+    border: 1px solid @border_color;
+    box-sizing: border-box;
+    padding: 30px 30px 20px 30px;
+}
+
+.textarea {
+    background-color: @textarea_color;
+    border-radius: 6px;
+    border: 1px solid @border_color;
+    box-sizing: border-box;
+    color: @font_color;
+    padding: 10px;
+    resize: none;
+    width: 100%;  
+}
+
+.cancel_button {
+    background-color: white;
+    border: none;
+    color: fade(@black, 60%);
+    cursor: pointer;
+    margin-right: 24px;
+}
+
+.success_button {
+    .button;
+    border-radius: 6px;
+    padding: 10px 30px;
+}
+
+.disable_button {
+    background-color: @primary_color;
+    opacity: 50%;
 }

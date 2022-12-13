@@ -1,24 +1,32 @@
-const close_buttons = document.querySelectorAll(".close_button");
-const cancel_buttons = document.querySelectorAll(".cancel_button");
-const create_message_button = document.querySelector("#create_message_button");
-const modals = document.querySelectorAll(".modal");
-const create_message_form = document.querySelector("#create_message_form");
+let close_buttons = document.querySelectorAll(".close_button");
+let cancel_buttons = document.querySelectorAll(".cancel_button");
+let create_message_button = document.querySelector("#create_message_button");
+let modals = document.querySelectorAll(".modal");
+let create_message_form = document.querySelector("#create_message_form");
+let messages_container = document.querySelector("#messages_container");
+let message_container = document.querySelector(".message_container");
+let messages_length = document.querySelector("#messages_length");
+let no_messages = document.querySelector("#no_messages");
+let comment_container = document.querySelector(".comment_container");
 
-for (const close_button of close_buttons) {
+for (let close_button of close_buttons) {
     close_button.addEventListener("click", closeModal);
 }
 
-for (const cancel_button of cancel_buttons) {
+for (let cancel_button of cancel_buttons) {
     cancel_button.addEventListener("click", closeModal);
 }
 
-for (const modal of modals) {
+for (let modal of modals) {
     modal.addEventListener("click", closeModalWhenClickedOutside);
 }
 
 create_message_button.addEventListener("click", openCreateMessageModal);
 create_message_form.addEventListener("keyup", validateFormMessage);
 create_message_form.addEventListener("submit", submitMessage);
+
+document.querySelector("#delete_message_form").addEventListener("submit", deleteMessageContainer);
+document.querySelector("#delete_comment_form").addEventListener("submit", deleteComment);
 
 function closeModal(event) {
     let modal = event.target.closest(".show_modal");
@@ -42,7 +50,7 @@ function openCreateMessageModal() {
 }
 
 function validateFormMessage(event) {
-    const success_button = event.currentTarget.lastElementChild.lastElementChild;
+    let success_button = event.currentTarget.lastElementChild.lastElementChild;
     if(event.currentTarget.message.value === "") {
         success_button.disabled = true;
         success_button.classList.add("disable_button");
@@ -53,17 +61,13 @@ function validateFormMessage(event) {
     }
 }
 
-const messages_container = document.querySelector("#messages_container");
-const message_container = document.querySelector(".message_container");
-const messages_length = document.querySelector("#messages_length");
-const no_messages = document.querySelector("#no_messages");
-let selected_message_container;
-
 function submitMessage(event) {
     event.preventDefault();
-    const cloned_message_container = message_container.cloneNode(true);
+    let cloned_message_container = message_container.cloneNode(true);
+
     cloned_message_container.hidden = false;
-    cloned_message_container.firstElementChild.post.value = event.target.message.value;
+    cloned_message_container.querySelector(".message_content").innerHTML = event.target.message.value;
+    cloned_message_container.id = getRandomId();
     messages_container.prepend(cloned_message_container);
     messages_length.innerHTML = messages_container.childElementCount;
     closeModal(event);
@@ -72,17 +76,18 @@ function submitMessage(event) {
     cloned_message_container.querySelector(".edit_message_form .delete_action").addEventListener("click", showDeleteModal);
     
     /* Edit action */
-    cloned_message_container.querySelector(".edit_message_form .edit_action").addEventListener("click", enableEditMessage);
+    let edit_message_form = cloned_message_container.querySelector(".edit_message_form");
 
-    const edit_message_form = cloned_message_container.querySelector(".edit_message_form")
-    edit_message_form.addEventListener("keyup", validateEditMessage);
-    cloned_message_container.querySelector(".edit_message_form .cancel_button").addEventListener("click", cancelEditMessage);
-    edit_message_form.addEventListener("submit", submitEditMessage);
+    edit_message_form.addEventListener("keyup", validateEditMessageForm);
+    cloned_message_container.querySelector(".edit_message_form .edit_action").addEventListener("click", showEditMessageForm);
+    cloned_message_container.querySelector(".edit_message_form .cancel_button").addEventListener("click", cancelEditMessageForm);
+    edit_message_form.addEventListener("submit", submitEditMessageForm);
 
     /* Comment action */
+    let post_comment_form = cloned_message_container.querySelector(".post_comment_form");
+
+    post_comment_form.addEventListener("keyup", validateCommentForm);
     cloned_message_container.querySelector(".edit_message_form .comment_action").addEventListener("click", toggleCommentForm);
-    const post_comment_form = cloned_message_container.querySelector(".post_comment_form");
-    post_comment_form.addEventListener("keyup", validateFormComment);
     post_comment_form.addEventListener("submit", submitComment);
 
     if(messages_container.childElementCount >= 1) {
@@ -90,38 +95,28 @@ function submitMessage(event) {
     }
 }
 
+/* Delete message functions */
 function showDeleteModal(event) {
-    document.querySelector(".delete_message_modal").classList.add("show_modal");
-    selected_message_container = event.currentTarget.closest(".message_container");
+    let delete_message_modal = document.querySelector(".delete_message_modal");
+    delete_message_modal.querySelector("#delete_message_form").message_id.value = event.currentTarget.closest(".message_container").id;
+    delete_message_modal.classList.add("show_modal");
 }
 
-document.querySelector("#delete_message_form").addEventListener("submit", deleteMessage);
-
-function deleteMessage(event) {
+function deleteMessageContainer(event) {
     event.preventDefault();
-    selected_message_container.remove();
-    selected_message_container = null;
+    messages_container.querySelector(`#${event.currentTarget.message_id.value}`).remove();
     messages_length.innerHTML = messages_container.childElementCount;
-    let modal = event.target.closest(".show_modal");
-    modal.classList.remove("show_modal");
+    event.target.closest(".show_modal").classList.remove("show_modal");
 
     if(messages_container.childElementCount === 0) {
         no_messages.id = "no_messages";
     }
 }
 
-function enableEditMessage (event) {
-    let form = event.currentTarget.closest(".edit_message_form");
-    form.post.classList.add("enable_textarea");
-    form.post.disabled = false;
-    form.post.dataset.oldMessage = form.post.value;
-    event.currentTarget.parentNode.classList.add("hide_message_actions");
-    event.currentTarget.parentNode.nextElementSibling.classList.remove("hide_buttons_container");
-    form.post.focus();
-}
+/* Edit message functions */
 
-function validateEditMessage(event) {
-    const success_button = event.currentTarget.lastElementChild.lastElementChild.lastElementChild;
+function validateEditMessageForm(event) {
+    let success_button = event.currentTarget.lastElementChild.lastElementChild.lastElementChild;
     if(event.currentTarget.post.value === "") {
         success_button.disabled = true;
         success_button.classList.add("disable_button");
@@ -132,43 +127,41 @@ function validateEditMessage(event) {
     }
 }
 
-function cancelEditMessage(event) {
+function showEditMessageForm (event) {
     let form = event.currentTarget.closest(".edit_message_form");
-    form.post.classList.remove("enable_textarea");
-    form.post.disabled = true;
-    form.post.value = form.post.dataset.oldMessage;
+    let message_content =form.querySelector(".message_content");
+    
+    message_content.classList.add("hide_message_content");
+    form.post.classList.remove("hide_textarea");
+    form.post.value =  message_content.textContent;
+    form.post.focus();
+    event.currentTarget.parentNode.classList.add("hide_message_actions");
+    event.currentTarget.parentNode.nextElementSibling.classList.remove("hide_buttons_container");
+}
+
+function cancelEditMessageForm(event) {
+    let form = event.currentTarget.closest(".edit_message_form");
+    
+    form.post.classList.add("hide_textarea");
+    form.querySelector(".message_content").classList.remove("hide_message_content");
     event.currentTarget.parentNode.classList.add("hide_buttons_container");
     event.currentTarget.parentNode.previousElementSibling.classList.remove("hide_message_actions");
 }
 
-function submitEditMessage(event) {
+function submitEditMessageForm(event) {
     event.preventDefault();
-    event.currentTarget.post.classList.remove("enable_textarea");
-    event.currentTarget.post.disabled = true;
+    let message_content = event.currentTarget.querySelector(".message_content");
+
+    message_content.innerHTML = event.currentTarget.post.value;
+    message_content.classList.remove("hide_message_content");
+    event.currentTarget.post.classList.add("hide_textarea");
     event.currentTarget.lastElementChild.lastElementChild.classList.add("hide_buttons_container");
     event.currentTarget.lastElementChild.firstElementChild.classList.remove("hide_message_actions");
 }
 
-function toggleCommentForm(event) {
-    const post_comment_form = event.currentTarget.closest(".edit_message_form").nextElementSibling;
-    post_comment_form.classList.toggle("hide_form");
-    post_comment_form.reset();
-    post_comment_form.lastElementChild.disabled = true;
-    post_comment_form.lastElementChild.classList.add("disable_button");
-    event.currentTarget.lastElementChild.classList.toggle("blue_text");
-    const img = event.currentTarget.firstElementChild;
-    if(img.getAttribute("src") === "../assets/images/messages-bubble-square-text.png"){
-        img.setAttribute("src", "../assets/images/messages-bubble-square-text-blue.png");
-    }
-    else{
-        img.setAttribute("src", "../assets/images/messages-bubble-square-text.png");
-    }
-    post_comment_form.comment.focus();
-    post_comment_form.nextElementSibling.classList.toggle("hide_comments_container");
-}
-
-function validateFormComment(event) {
-    const success_button = event.currentTarget.lastElementChild;
+/* Comment message functions */
+function validateCommentForm(event) {
+    let success_button = event.currentTarget.lastElementChild;
     if(event.currentTarget.comment.value === "") {
         success_button.disabled = true;
         success_button.classList.add("disable_button");
@@ -179,61 +172,68 @@ function validateFormComment(event) {
     }
 }
 
-const comment_container = document.querySelector(".comment_container");
+function toggleCommentForm(event) {
+    let post_comment_form = event.currentTarget.closest(".edit_message_form").nextElementSibling;
+    post_comment_form.classList.toggle("hide_form");
+    post_comment_form.reset();
+    post_comment_form.lastElementChild.disabled = true;
+    post_comment_form.lastElementChild.classList.add("disable_button");
+    event.currentTarget.lastElementChild.classList.toggle("blue_text");
+    let img = event.currentTarget.firstElementChild;
+    if(img.getAttribute("src") === "../assets/images/messages-bubble-square-text.png"){
+        img.setAttribute("src", "../assets/images/messages-bubble-square-text-blue.png");
+    }
+    else{
+        img.setAttribute("src", "../assets/images/messages-bubble-square-text.png");
+    }
+    post_comment_form.comment.focus();
+    post_comment_form.nextElementSibling.classList.toggle("hide_comments_container");
+}
 
 function submitComment(event) {
     event.preventDefault();
-    const cloned_comment_container = comment_container.cloneNode(true);
+    let cloned_comment_container = comment_container.cloneNode(true);
+
     cloned_comment_container.hidden = false;
-    cloned_comment_container.firstElementChild.post_comment.value = event.currentTarget.comment.value;
+    cloned_comment_container.querySelector(".comment_content").innerHTML = event.target.comment.value;
+    cloned_comment_container.id = getRandomId();
     event.currentTarget.nextElementSibling.prepend(cloned_comment_container);
     event.currentTarget.reset();
     event.currentTarget.lastElementChild.disabled = true;
     event.currentTarget.lastElementChild.classList.add("disable_button");
-    event.currentTarget.parentNode.querySelector(".comment_length").innerHTML = `${event.currentTarget.nextElementSibling.childElementCount} Comment`; 
+    event.currentTarget.parentNode.querySelector(".comment_length").innerHTML = `${event.currentTarget.nextElementSibling.childElementCount - 1} Comment`; 
 
     /* Delete comment action */
     cloned_comment_container.querySelector(".edit_comment_form .delete_action").addEventListener("click", showDeleteCommnentModal);
 
     /* Edit comment action */
-    cloned_comment_container.querySelector(".edit_comment_form .edit_action").addEventListener("click", enableEditComment);
-    const edit_comment_form =  cloned_comment_container.querySelector(".edit_comment_form");
-    edit_comment_form.addEventListener("keyup", validateEditComment);
-    cloned_comment_container.querySelector(".edit_comment_form .cancel_button").addEventListener("click", cancelEditComment);
-    edit_comment_form.addEventListener("submit", submitEditComment);
+    let edit_comment_form =  cloned_comment_container.querySelector(".edit_comment_form");
+    
+    edit_comment_form.addEventListener("keyup", validateEditCommentForm);
+    cloned_comment_container.querySelector(".edit_comment_form .edit_action").addEventListener("click", showEditCommentForm);
+    cloned_comment_container.querySelector(".edit_comment_form .cancel_button").addEventListener("click", cancelEditCommentForm);
+    edit_comment_form.addEventListener("submit", submitEditCommentForm);
 }
 
-let selected_comment_container;
+/* Delete comment functions */
 
 function showDeleteCommnentModal(event) {
-    document.querySelector(".delete_comment_modal").classList.add("show_modal");
-    selected_comment_container = event.currentTarget.closest(".comment_container");
+    let delete_comment_container = document.querySelector(".delete_comment_modal");
+    delete_comment_container.querySelector("#delete_comment_form").comment_id.value = event.currentTarget.closest(".comment_container").id;
+    delete_comment_container.classList.add("show_modal");
 }
-
-document.querySelector("#delete_comment_form").addEventListener("submit", deleteComment);
 
 function deleteComment(event) {
     event.preventDefault();
-
-    let modal = event.target.closest(".show_modal");
-    modal.classList.remove("show_modal");
-    selected_comment_container.parentNode.parentNode.querySelector(".comment_length").innerHTML = `${selected_comment_container.parentNode.childElementCount - 1} Comment`; 
-    selected_comment_container.remove();
-    selected_comment_container = null;
+    let selected_comment_container = document.querySelector(`.comments_container #${event.currentTarget.comment_id.value}`);
+    selected_comment_container.parentNode.parentNode.querySelector(".comment_length").innerHTML = `${(selected_comment_container.parentNode.childElementCount-1) - 1} Comment`;
+    selected_comment_container.remove(); 
+    event.target.closest(".show_modal").classList.remove("show_modal");
 }
 
-function enableEditComment (event) {
-    let form = event.currentTarget.closest(".edit_comment_form");
-    form.post_comment.classList.add("enable_textarea");
-    form.post_comment.disabled = false;
-    form.post_comment.dataset.oldMessage = form.post_comment.value;
-    event.currentTarget.parentNode.classList.add("hide_message_actions");
-    event.currentTarget.parentNode.nextElementSibling.classList.remove("hide_buttons_container");
-    form.post_comment.focus();
-}
-
-function validateEditComment(event) {
-    const success_button = event.currentTarget.lastElementChild.lastElementChild.lastElementChild;
+/* Edit comment functions */
+function validateEditCommentForm(event) {
+    let success_button = event.currentTarget.lastElementChild.lastElementChild.lastElementChild;
     if(event.currentTarget.post_comment.value === "") {
         success_button.disabled = true;
         success_button.classList.add("disable_button");
@@ -244,19 +244,34 @@ function validateEditComment(event) {
     }
 }
 
-function cancelEditComment(event) {
+function showEditCommentForm (event) {
     let form = event.currentTarget.closest(".edit_comment_form");
-    form.post_comment.classList.remove("enable_textarea");
-    form.post_comment.disabled = true;
-    form.post_comment.value = form.post_comment.dataset.oldMessage;
+    let comment_content = form.querySelector(".comment_content");
+
+    comment_content.classList.add("hide_comment_content");
+    form.post_comment.classList.remove("hide_textarea");
+    form.post_comment.value =  comment_content.textContent;
+    form.post_comment.focus();
+    event.currentTarget.parentNode.classList.add("hide_message_actions");
+    event.currentTarget.parentNode.nextElementSibling.classList.remove("hide_buttons_container");
+}
+
+function cancelEditCommentForm(event) {
+    let form = event.currentTarget.closest(".edit_comment_form");
+
+    form.post_comment.classList.add("hide_textarea");
+    form.querySelector(".comment_content").classList.remove("hide_comment_content");
     event.currentTarget.parentNode.classList.add("hide_buttons_container");
     event.currentTarget.parentNode.previousElementSibling.classList.remove("hide_message_actions");
 }
 
-function submitEditComment(event) {
+function submitEditCommentForm(event) {
     event.preventDefault();
-    event.currentTarget.post_comment.classList.remove("enable_textarea");
-    event.currentTarget.post_comment.disabled = true;
+    let comment_content = event.currentTarget.querySelector(".comment_content");
+
+    comment_content.innerHTML = event.currentTarget.post_comment.value;
+    comment_content.classList.remove("hide_comment_content");
+    event.currentTarget.post_comment.classList.add("hide_textarea");
     event.currentTarget.lastElementChild.lastElementChild.classList.add("hide_buttons_container");
     event.currentTarget.lastElementChild.firstElementChild.classList.remove("hide_message_actions");
 }

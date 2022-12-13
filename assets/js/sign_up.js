@@ -1,15 +1,15 @@
-const signup_form = document.getElementById("signup_form");
+let signup_form = document.getElementById("signup_form");
 
 signup_form.addEventListener("submit", registerUser);
 
 function registerUser(event) {
     event.preventDefault();
-    const email_input = document.getElementById("email_input");
-    const password_input = document.getElementById("password_input");
-    const confirm_password_input = document.getElementById("confirm_password_input");
-    const form = event.target;
+    let email_input = document.getElementById("email_input");
+    let password_input = document.getElementById("password_input");
+    let confirm_password_input = document.getElementById("confirm_password_input");
+    let form = event.target;
 
-    if(!EMAIL.isValid.test(form.email.value)) {
+    if(!EMAIL.is_valid.test(form.email.value)) {
         email_input.classList.add("show_error_color");
         email_input.nextElementSibling.classList.add("show_error_message");
     }
@@ -36,14 +36,7 @@ function registerUser(event) {
         confirm_password_input.nextElementSibling.classList.remove("show_error_message");
     }
 
-    let error = 0;
-    for (const element of form) {
-        if(element.classList.contains("show_error_color")) {
-            error+=1;
-            break;
-        }
-    }
-    if (error === 0) {
-        window.location.href = "./wall.html";
+    if (form.querySelectorAll(".show_error_message").length === 0) {
+        window.location.href = "./wall.html"
     }
 }

@@ -1,188 +1,119 @@
 @import url("./global.less");
 
-.cancel_button {
-    color: fade(@black, 60%);
-    cursor: pointer;
-    margin-right: 24px;
-    text-decoration: none;
-}
-
-.success_button {
-    .button;
-    border-radius: 6px;
-    padding: 10px 30px;
-}
-
-.hide_message_actions,
-.hide_buttons_container {
-    visibility: hidden;
-}
-
-.hide_form {
-    display: none;
-}
-
-.disable_button {
-    background-color: @primary_color;
-    opacity: 50%;
-}
-
-.bordered_container {
-    border-radius: 6px;
-    border: 1px solid @border_color;
-    box-sizing: border-box;
-    margin-bottom: 25px;
-    min-height: 144px;
-    padding: 30px;
-}
-
-.actions_container {
-    align-items: center;
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
-}
-
-textarea{
-    border: none;
-    box-sizing: border-box;
-    color: @font_color;
-    height: 45px;
-    margin-bottom: 15px;
-    resize: none;
-    width: 100%;
-
-    &:disabled {
-        background-color: @white;
-        color: @font_color;
-    }
-}
-
-.textarea {
-    background-color: @textarea_color;
-    border-radius: 6px;
-    border: 1px solid @border_color;
-    box-sizing: border-box;
-    padding: 10px;
-    resize: none;
-    width: 100%;  
-}
-
-.enable_textarea {
-    .textarea;
-    height: 84px;
-}
-
-.message_actions {
-    display: flex;
-    flex-wrap: wrap;
-    list-style: none;
-    margin: 0;
-    padding-left: 0;
-
-    li {
-        align-items: center;
-        color: @actions_font_color;
-        cursor: pointer;
-        display: flex;
-        margin-right: 20px;
-
-        .blue_text {
-            color: @primary_color;
-        }
-
-        span {
-            span {
-                font-weight: 900;
-                margin-left: 5px;
-            }
-        }
-
-        &:last-child {
-            cursor: auto;
-        }
-    }
-}
-
 header {
     .box_container;
-    align-items: center;
     color: @font_color;
-    display: flex;
-    height: 121px;
-    justify-content: space-between;
-    padding-inline: 78px;
-
-    nav {
+    
+    .container {
         align-items: center;
         display: flex;
+        height: 121px;
+        justify-content: space-between;
+        margin: 0 auto;
+        max-width: 1440px;
+        padding-inline: 68px;
 
-        a {
-            color: @primary_color;
-            font-weight: bold;
-            margin-left: 16px;
-            text-decoration: none;
+        nav {
+            align-items: center;
+            display: flex;
+    
+            a {
+                color: @primary_color;
+                font-weight: bold;
+                margin-left: 16px;
+                text-decoration: none;
+            }
         }
     }
 }
 
 main {
-    .box_container;
+    display: flex;
+    justify-content: center;
     margin: 50px 78px;
-    min-height: 1035px;
-    padding: 58px 68px;
 
-    .main_header {
-        align-items: center;
-        display: flex;
-        justify-content: space-between;
-        margin-bottom: 30px;
+    .container {
+        .box_container;
+        box-sizing: border-box;
+        min-height: 1035px;
+        padding: 58px 68px;
+        width: 1440px;
+    
+        .main_header {
+            align-items: center;
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 30px;
+    
+            p {
+                color: @actions_font_color;
+            }
+    
+            #messages_length {
+                color: @primary_color;
+                font-weight: 900;
+            }
+    
+            #create_message_button {
+                .button;
+                border-radius: 6px;
+                cursor: pointer;
+                padding: 10px 30px;
+            }
+        }
+    
+        #messages_container {
+            list-style: none;
+            padding: 0;
 
-        p {
+            .message_container {
+                .bordered_container;
+                margin-bottom: 25px;
+    
+                .post_comment_form {
+                    .bordered_container;
+                    margin-bottom: 10px;
+                    margin-top: 22px;
+                    text-align: right;
+                }
+
+                .comments_container {
+                    list-style: none;
+                    padding: 0;
+
+                    .comment_container {
+                        .bordered_container;
+                        margin-bottom: 10px;
+                        margin-top: 20px;
+                    }
+                }
+
+                &:last-child {
+                    margin-bottom: 0;
+                }
+            }
+        }
+    
+        #no_messages {
+            align-items: center;
             color: @actions_font_color;
-        }
-
-        #messages_length {
-            color: @primary_color;
-            font-weight: 900;
-        }
-
-        #create_message_button {
-            .button;
-            border-radius: 6px;
-            cursor: pointer;
-            padding: 10px 30px;
-        }
-    }
-
-    #messages_container {
-        .message_container {
-            .bordered_container;
-
-            .post_comment_form {
-                .bordered_container;
-                margin-top: 25px;
-                text-align: right;
-            }
-            .comment_container {
-                .bordered_container;
+            display: flex;
+            flex-direction: column;
+            flex: 1;
+            justify-content: center;
+            margin-top: 126px;
+    
+            p {
+                margin-top: 30px;
             }
         }
     }
+}
 
-    #no_messages {
-        align-items: center;
-        color: @actions_font_color;
-        display: flex;
-        flex-direction: column;
-        flex: 1;
-        justify-content: center;
-        margin-top: 126px;
-
-        p {
-            margin-top: 30px;
-        }
-    }
+textarea{
+    .textarea;
+    height: 84px;
+    margin-bottom: 15px;
 }
 
 .delete_message_modal,
@@ -229,15 +160,17 @@ main {
             padding-inline: 20px;
         }
 
-        textarea {
-            .textarea;
-            margin-bottom: 30px;
-            min-height: 185px;
-        }
-
         .buttons_container {
             text-align: right;
         }
+    }
+}
+
+.create_message_modal {
+    textarea {
+        .textarea;
+        margin-bottom: 30px;
+        min-height: 185px;
     }
 }
 
@@ -248,8 +181,8 @@ main {
 
         .buttons_container {
             margin-top: 40px;
-            text-align: center;
             padding-left: 40px;
+            text-align: center;
         
             .success_button {
                 margin-left: 50px;
@@ -259,90 +192,147 @@ main {
     }
 }
 
-.show_modal {
-    visibility: visible;
+.comment_content,
+.message_content {
+    color: @font_color;
+    margin-bottom: 15px;
+    margin: 0 0 15px;
+    word-wrap: break-word;
 }
 
+.actions_container {
+    align-items: center;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+
+    .message_actions {
+        display: flex;
+        flex-wrap: wrap;
+        list-style: none;
+        margin: 0;
+        padding-left: 0;
+    
+        li {
+            align-items: center;
+            color: @actions_font_color;
+            cursor: pointer;
+            display: flex;
+            margin-right: 20px;
+            
+            img {
+                margin-right: 5px;
+            }
+    
+            .blue_text {
+                color: @primary_color;
+            }
+    
+            div {
+                span {
+                    font-weight: 900;
+                }
+            }
+    
+            &:last-child {
+                cursor: auto;
+            }
+        }
+    }
+}
+
+.hide_message_actions,
+.hide_buttons_container {
+    visibility: hidden;
+}
+
+.hide_comment_content,
+.hide_message_content,
+.hide_textarea,
+.hide_form,
 .hide_comments_container,
 #hide_no_messages {
     display: none;
 }
 
+.show_modal {
+    visibility: visible;
+}
 
-@media only screen and (max-width: 480px){
-    .actions_container {
-        align-items: flex-start;
-        display: flex;
-        flex-direction: column-reverse;
-    }
+// @media only screen and (max-width: 480px){
+//     .actions_container {
+//         align-items: flex-start;
+//         display: flex;
+//         flex-direction: column-reverse;
+//     }
 
-    .message_actions {
-        display: flex;
+//     .message_actions {
+//         display: flex;
     
-        li {
-            align-items: center;
-            justify-content: flex-start;
-        }
-    }
+//         li {
+//             align-items: center;
+//             justify-content: flex-start;
+//         }
+//     }
 
-    header {
-        padding-inline: 10px;
+//     header {
+//         padding-inline: 10px;
 
-        nav {
-            align-items: flex-end;
-            flex-direction: column;
-            text-align: right;
+//         nav {
+//             align-items: flex-end;
+//             flex-direction: column;
+//             text-align: right;
 
-            a {
-                margin-left: 0;
-            }
-        }
-    }
+//             a {
+//                 margin-left: 0;
+//             }
+//         }
+//     }
 
-    main {
-        margin: 20px 10px;
-        padding: 10px;
+//     main {
+//         margin: 20px 10px;
+//         padding: 10px;
 
-        #messages_container {
-            .message_container {
-                padding: 10px;    
-            }
-        }
-    }
+//         #messages_container {
+//             .message_container {
+//                 padding: 10px;    
+//             }
+//         }
+//     }
 
 
-.delete_message_modal,
-.create_message_modal,
-.delete_comment_modal {
-    .modal_container {
-        margin: 10px;
-        padding: 50px 20px;
+// .delete_message_modal,
+// .create_message_modal,
+// .delete_comment_modal {
+//     .modal_container {
+//         margin: 10px;
+//         padding: 50px 20px;
 
-        textarea {
-            min-height: 100px;
-        }
+//         textarea {
+//             min-height: 100px;
+//         }
 
-        .buttons_container {
-            text-align: right;
-        }
-    }
-}
+//         .buttons_container {
+//             text-align: right;
+//         }
+//     }
+// }
 
-.delete_message_modal,
-.delete_comment_modal {
-    .modal_container {
-        max-width: 540px;
+// .delete_message_modal,
+// .delete_comment_modal {
+//     .modal_container {
+//         max-width: 540px;
 
-        .buttons_container {
-            margin-top: 40px;
-            padding-left: 0;
-            text-align: center;
+//         .buttons_container {
+//             margin-top: 40px;
+//             padding-left: 0;
+//             text-align: center;
         
-            .success_button {
-                margin-left: 0;
-                padding: 15px 40px;
-            }
-        }
-    }
-}
-}
+//             .success_button {
+//                 margin-left: 0;
+//                 padding: 15px 40px;
+//             }
+//         }
+//     }
+// }
+// }
