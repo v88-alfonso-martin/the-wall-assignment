@@ -10,7 +10,7 @@ header {
         height: 121px;
         justify-content: space-between;
         margin: 0 auto;
-        max-width: 1440px;
+        max-width: 1280px;
         padding-inline: 68px;
 
         nav {
@@ -37,7 +37,7 @@ main {
         box-sizing: border-box;
         min-height: 1035px;
         padding: 58px 68px;
-        width: 1440px;
+        width: 1280px;
     
         .main_header {
             align-items: center;
@@ -259,80 +259,80 @@ textarea{
     visibility: visible;
 }
 
-// @media only screen and (max-width: 480px){
-//     .actions_container {
-//         align-items: flex-start;
-//         display: flex;
-//         flex-direction: column-reverse;
-//     }
+@media only screen and (max-width: 480px){
+    .actions_container {
+        align-items: flex-start;
+        display: flex;
+        flex-direction: column-reverse;
+    }
 
-//     .message_actions {
-//         display: flex;
+    .message_actions {
+        display: flex;
     
-//         li {
-//             align-items: center;
-//             justify-content: flex-start;
-//         }
-//     }
+        li {
+            align-items: center;
+            justify-content: flex-start;
+        }
+    }
 
-//     header {
-//         padding-inline: 10px;
+    header {
+        padding-inline: 10px;
 
-//         nav {
-//             align-items: flex-end;
-//             flex-direction: column;
-//             text-align: right;
+        nav {
+            align-items: flex-end;
+            flex-direction: column;
+            text-align: right;
 
-//             a {
-//                 margin-left: 0;
-//             }
-//         }
-//     }
+            a {
+                margin-left: 0;
+            }
+        }
+    }
 
-//     main {
-//         margin: 20px 10px;
-//         padding: 10px;
+    main {
+        margin: 20px 10px;
+        padding: 10px;
 
-//         #messages_container {
-//             .message_container {
-//                 padding: 10px;    
-//             }
-//         }
-//     }
+        #messages_container {
+            .message_container {
+                padding: 10px;    
+            }
+        }
+    }
 
 
-// .delete_message_modal,
-// .create_message_modal,
-// .delete_comment_modal {
-//     .modal_container {
-//         margin: 10px;
-//         padding: 50px 20px;
+.delete_message_modal,
+.create_message_modal,
+.delete_comment_modal {
+    .modal_container {
+        margin: 10px;
+        padding: 50px 20px;
 
-//         textarea {
-//             min-height: 100px;
-//         }
+        textarea {
+            min-height: 100px;
+        }
 
-//         .buttons_container {
-//             text-align: right;
-//         }
-//     }
-// }
+        .buttons_container {
+            text-align: right;
+        }
+    }
+}
 
-// .delete_message_modal,
-// .delete_comment_modal {
-//     .modal_container {
-//         max-width: 540px;
+.delete_message_modal,
+.delete_comment_modal {
+    .modal_container {
+        max-width: 540px;
 
-//         .buttons_container {
-//             margin-top: 40px;
-//             padding-left: 0;
-//             text-align: center;
+        .buttons_container {
+            margin-top: 40px;
+            padding-left: 0;
+            text-align: center;
         
-//             .success_button {
-//                 margin-left: 0;
-//                 padding: 15px 40px;
-//             }
-//         }
-//     }
-// }
-// }
+            .success_button {
+                margin-left: 0;
+                padding: 15px 40px;
+            }
+        }
+    }
+}
+}

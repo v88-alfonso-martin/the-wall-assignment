@@ -201,7 +201,7 @@ function submitComment(event) {
     event.currentTarget.reset();
     event.currentTarget.lastElementChild.disabled = true;
     event.currentTarget.lastElementChild.classList.add("disable_button");
-    event.currentTarget.parentNode.querySelector(".comment_length").innerHTML = `${event.currentTarget.nextElementSibling.childElementCount - 1} Comment`; 
+    event.currentTarget.parentNode.querySelector(".comment_length").innerHTML = `${event.currentTarget.nextElementSibling.childElementCount} Comment`; 
 
     /* Delete comment action */
     cloned_comment_container.querySelector(".edit_comment_form .delete_action").addEventListener("click", showDeleteCommnentModal);
@@ -226,7 +226,7 @@ function showDeleteCommnentModal(event) {
 function deleteComment(event) {
     event.preventDefault();
     let selected_comment_container = document.querySelector(`.comments_container #${event.currentTarget.comment_id.value}`);
-    selected_comment_container.parentNode.parentNode.querySelector(".comment_length").innerHTML = `${(selected_comment_container.parentNode.childElementCount-1) - 1} Comment`;
+    selected_comment_container.parentNode.parentNode.querySelector(".comment_length").innerHTML = `${selected_comment_container.parentNode.childElementCount - 1} Comment`;
     selected_comment_container.remove(); 
     event.target.closest(".show_modal").classList.remove("show_modal");
 }

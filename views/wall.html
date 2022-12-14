@@ -96,7 +96,8 @@
                             <span class="blue_text">Edit</span>
                         </li>
                         <li class="delete_action">
-                            <img src="../assets/images/delete.png" alt="Delete Icon"><span>Delete</span>
+                            <img src="../assets/images/delete.png" alt="Delete Icon">
+                            <span>Delete</span>
                         </li> 
                         <li>
                             <img src="../assets/images/User-Placeholder.png" alt="User Icon">
@@ -107,7 +108,7 @@
                     </ul>
                     <div class="hide_buttons_container">
                         <button type="button" class="cancel_button">Cancel</button>
-                        <button type="submit" class="success_button edit_button">Update Message</button>
+                        <button type="submit" class="success_button">Update Message</button>
                     </div>
                 </div>
             </form>  
@@ -115,36 +116,35 @@
                 <textarea class="enable_textarea" name="comment" placeholder="Type your comment here."></textarea>
                 <button type="submit" class="success_button disable_button" disabled>Post Comment</button>
             </form> 
-            <ul class="comments_container hide_comments_container">
-                <li hidden class="comment_container">
-                    <form class="edit_comment_form">
-                        <textarea class="hide_textarea" name="post_comment" placeholder="Type your message here."></textarea>
-                        <p class="comment_content"></p>
-                        <div class="actions_container">
-                            <ul class="message_actions">
-                                <li class="edit_action">
-                                    <img src="../assets/images/pencil-write.png" alt="Edit Icon"> 
-                                    <span class="blue_text">Edit</span>
-                                </li>
-                                <li class="delete_action">
-                                    <img src="../assets/images/delete.png" alt="Delete Icon"> 
-                                    <span>Delete</span>
-                                </li> 
-                                <li>
-                                    <img src="../assets/images/User-Placeholder.png" alt="User Icon"> 
-                                    <div>
-                                        <span>You</span> - Few seconds ago
-                                    </div>
-                                </li>
-                            </ul>
-                            <div class="hide_buttons_container"> 
-                                <button type="button" class="cancel_button">Cancel</button>
-                                <button type="submit" class="success_button">Update Message</button>
+            <ul class="comments_container hide_comments_container"></ul>
+        </li>
+        <li hidden class="comment_container">
+            <form class="edit_comment_form">
+                <textarea class="hide_textarea" name="post_comment" placeholder="Type your message here."></textarea>
+                <p class="comment_content"></p>
+                <div class="actions_container">
+                    <ul class="message_actions">
+                        <li class="edit_action">
+                            <img src="../assets/images/pencil-write.png" alt="Edit Icon"> 
+                            <span class="blue_text">Edit</span>
+                        </li>
+                        <li class="delete_action">
+                            <img src="../assets/images/delete.png" alt="Delete Icon"> 
+                            <span>Delete</span>
+                        </li> 
+                        <li>
+                            <img src="../assets/images/User-Placeholder.png" alt="User Icon"> 
+                            <div>
+                                <span>You</span> - Few seconds ago
                             </div>
-                        </div>
-                    </form> 
-                </li>
-            </ul>
+                        </li>
+                    </ul>
+                    <div class="hide_buttons_container"> 
+                        <button type="button" class="cancel_button">Cancel</button>
+                        <button type="submit" class="success_button">Update Message</button>
+                    </div>
+                </div>
+            </form> 
         </li>
     </ul>
 </body>
