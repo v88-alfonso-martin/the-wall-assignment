@@ -1,6 +1,4 @@
-let signup_form = document.getElementById("signup_form");
-
-signup_form.addEventListener("submit", registerUser);
+document.getElementById("signup_form").addEventListener("submit", registerUser);
 
 function registerUser(event) {
     event.preventDefault();

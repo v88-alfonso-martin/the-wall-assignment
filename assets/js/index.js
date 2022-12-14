@@ -1,6 +1,4 @@
-let login_form = document.getElementById("login_form");
-
-login_form.addEventListener("submit", loginUser);
+document.getElementById("login_form").addEventListener("submit", loginUser);
 
 function loginUser(event) {
 	event.preventDefault();
