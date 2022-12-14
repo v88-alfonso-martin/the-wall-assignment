@@ -298,7 +298,7 @@ textarea {
 .actions_container .message_actions li:last-child {
   cursor: auto;
 }
-.actions_container .buttons_container {
+.actions_container div {
   flex: 1;
   text-align: right;
 }
