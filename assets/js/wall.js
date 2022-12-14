@@ -4,8 +4,10 @@ let modals = document.querySelectorAll(".modal");
 let create_message_button = document.querySelector("#create_message_button");
 let create_message_form = document.querySelector("#create_message_form");
 let messages_container = document.querySelector("#messages_container");
+let message_container = document.querySelector(".message_container");
 let messages_length = document.querySelector("#messages_length");
 let no_messages = document.querySelector("#no_messages");
+let comment_container = document.querySelector(".comment_container");
 
 for (let close_button of close_buttons) {
     close_button.addEventListener("click", closeModal);
@@ -63,7 +65,7 @@ function validateFormMessage(event) {
 
 function submitMessage(event) {
     event.preventDefault();
-    let cloned_message_container = document.querySelector(".message_container").cloneNode(true);
+    let cloned_message_container = message_container.cloneNode(true);
 
     cloned_message_container.hidden = false;
     cloned_message_container.querySelector(".message_content").innerHTML = event.target.message.value;
@@ -191,7 +193,7 @@ function toggleCommentForm(event) {
 
 function submitComment(event) {
     event.preventDefault();
-    let cloned_comment_container = document.querySelector(".comment_container").cloneNode(true);
+    let cloned_comment_container = comment_container.cloneNode(true);
 
     cloned_comment_container.hidden = false;
     cloned_comment_container.querySelector(".comment_content").innerHTML = event.target.comment.value;
