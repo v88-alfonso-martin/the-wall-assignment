@@ -20,7 +20,7 @@ header {
             a {
                 color: @primary_color;
                 font-weight: bold;
-                margin-left: 16px;
+                margin-left: 15px;
                 text-decoration: none;
             }
         }
@@ -212,7 +212,7 @@ textarea{
         list-style: none;
         margin: 0;
         padding-left: 0;
-    
+
         li {
             align-items: center;
             color: @actions_font_color;
@@ -239,13 +239,15 @@ textarea{
             }
         }
     }
+
+    .buttons_container {
+        flex: 1;
+        text-align: right;
+    }
 }
 
 .hide_message_actions,
-.hide_buttons_container {
-    visibility: hidden;
-}
-
+.hide_buttons_container,
 .hide_comment_content,
 .hide_message_content,
 .hide_textarea,
@@ -260,46 +262,47 @@ textarea{
 }
 
 @media only screen and (max-width: 480px){
-    .actions_container {
-        align-items: flex-start;
-        display: flex;
-        flex-direction: column-reverse;
-    }
-
-    .message_actions {
-        display: flex;
-    
-        li {
-            align-items: center;
-            justify-content: flex-start;
-        }
-    }
 
     header {
-        padding-inline: 10px;
-
-        nav {
-            align-items: flex-end;
+        .container {
             flex-direction: column;
-            text-align: right;
-
-            a {
-                margin-left: 0;
-            }
+            padding-inline: 10px;
         }
     }
 
     main {
-        margin: 20px 10px;
-        padding: 10px;
+        margin: 20px;
 
-        #messages_container {
-            .message_container {
-                padding: 10px;    
+        .container {
+            padding: 18px 28px;
+
+            .main_header {
+                flex-direction: column;
+                
+                p {
+                    text-align: center;
+                }
             }
         }
     }
 
+    .actions_container {
+        align-items: flex-start;
+        display: flex;
+   
+        .message_actions {
+            flex-direction: column;
+        
+            li {
+                align-items: center;
+                justify-content: flex-start;
+            }
+        }
+
+        .buttons_container {
+            text-align: center;
+        }
+    }
 
 .delete_message_modal,
 .create_message_modal,

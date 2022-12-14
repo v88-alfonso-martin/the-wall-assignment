@@ -136,6 +136,7 @@ function showEditMessageForm (event) {
     form.post.classList.remove("hide_textarea");
     form.post.value =  message_content.textContent;
     form.post.focus();
+    event.currentTarget.parentNode.classList.remove("message_actions");
     event.currentTarget.parentNode.classList.add("hide_message_actions");
     event.currentTarget.parentNode.nextElementSibling.classList.remove("hide_buttons_container");
 }
@@ -147,6 +148,7 @@ function cancelEditMessageForm(event) {
     form.querySelector(".message_content").classList.remove("hide_message_content");
     event.currentTarget.parentNode.classList.add("hide_buttons_container");
     event.currentTarget.parentNode.previousElementSibling.classList.remove("hide_message_actions");
+    event.currentTarget.parentNode.previousElementSibling.classList.add("message_actions");
 }
 
 function submitEditMessageForm(event) {
@@ -158,6 +160,7 @@ function submitEditMessageForm(event) {
     event.currentTarget.post.classList.add("hide_textarea");
     event.currentTarget.lastElementChild.lastElementChild.classList.add("hide_buttons_container");
     event.currentTarget.lastElementChild.firstElementChild.classList.remove("hide_message_actions");
+    event.currentTarget.lastElementChild.firstElementChild.classList.add("message_actions");
 }
 
 /* Comment message functions */
@@ -252,6 +255,7 @@ function showEditCommentForm (event) {
     form.post_comment.classList.remove("hide_textarea");
     form.post_comment.value =  comment_content.textContent;
     form.post_comment.focus();
+    event.currentTarget.parentNode.classList.remove("message_actions");
     event.currentTarget.parentNode.classList.add("hide_message_actions");
     event.currentTarget.parentNode.nextElementSibling.classList.remove("hide_buttons_container");
 }
@@ -263,6 +267,7 @@ function cancelEditCommentForm(event) {
     form.querySelector(".comment_content").classList.remove("hide_comment_content");
     event.currentTarget.parentNode.classList.add("hide_buttons_container");
     event.currentTarget.parentNode.previousElementSibling.classList.remove("hide_message_actions");
+    event.currentTarget.parentNode.previousElementSibling.classList.add("message_actions");
 }
 
 function submitEditCommentForm(event) {
@@ -274,4 +279,5 @@ function submitEditCommentForm(event) {
     event.currentTarget.post_comment.classList.add("hide_textarea");
     event.currentTarget.lastElementChild.lastElementChild.classList.add("hide_buttons_container");
     event.currentTarget.lastElementChild.firstElementChild.classList.remove("hide_message_actions");
+    event.currentTarget.lastElementChild.firstElementChild.classList.add("message_actions");
 }

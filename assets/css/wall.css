@@ -78,7 +78,7 @@ header .container nav {
 header .container nav a {
   color: #2c6bff;
   font-weight: bold;
-  margin-left: 16px;
+  margin-left: 15px;
   text-decoration: none;
 }
 main {
@@ -298,10 +298,12 @@ textarea {
 .actions_container .message_actions li:last-child {
   cursor: auto;
 }
-.hide_message_actions,
-.hide_buttons_container {
-  visibility: hidden;
+.actions_container .buttons_container {
+  flex: 1;
+  text-align: right;
 }
+.hide_message_actions,
+.hide_buttons_container,
 .hide_comment_content,
 .hide_message_content,
 .hide_textarea,
@@ -314,35 +316,35 @@ textarea {
   visibility: visible;
 }
 @media only screen and (max-width: 480px) {
+  header .container {
+    flex-direction: column;
+    padding-inline: 10px;
+  }
+  main {
+    margin: 20px;
+  }
+  main .container {
+    padding: 18px 28px;
+  }
+  main .container .main_header {
+    flex-direction: column;
+  }
+  main .container .main_header p {
+    text-align: center;
+  }
   .actions_container {
     align-items: flex-start;
     display: flex;
-    flex-direction: column-reverse;
   }
-  .message_actions {
-    display: flex;
+  .actions_container .message_actions {
+    flex-direction: column;
   }
-  .message_actions li {
+  .actions_container .message_actions li {
     align-items: center;
     justify-content: flex-start;
   }
-  header {
-    padding-inline: 10px;
-  }
-  header nav {
-    align-items: flex-end;
-    flex-direction: column;
-    text-align: right;
-  }
-  header nav a {
-    margin-left: 0;
-  }
-  main {
-    margin: 20px 10px;
-    padding: 10px;
-  }
-  main #messages_container .message_container {
-    padding: 10px;
+  .actions_container .buttons_container {
+    text-align: center;
   }
   .delete_message_modal .modal_container,
   .create_message_modal .modal_container,
