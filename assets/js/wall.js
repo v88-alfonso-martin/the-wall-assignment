@@ -1,7 +1,7 @@
 let close_buttons = document.querySelectorAll(".close_button");
 let cancel_buttons = document.querySelectorAll(".cancel_button");
-let create_message_button = document.querySelector("#create_message_button");
 let modals = document.querySelectorAll(".modal");
+let create_message_button = document.querySelector("#create_message_button");
 let create_message_form = document.querySelector("#create_message_form");
 let messages_container = document.querySelector("#messages_container");
 let message_container = document.querySelector(".message_container");
@@ -28,6 +28,7 @@ create_message_form.addEventListener("submit", submitMessage);
 document.querySelector("#delete_message_form").addEventListener("submit", deleteMessageContainer);
 document.querySelector("#delete_comment_form").addEventListener("submit", deleteComment);
 
+/* Modal function */
 function closeModal(event) {
     let modal = event.target.closest(".show_modal");
     modal.classList.remove("show_modal");
@@ -49,6 +50,7 @@ function openCreateMessageModal() {
     create_message_modal.querySelector("#create_message_form textarea").focus();
 }
 
+/* Create message function */
 function validateFormMessage(event) {
     let success_button = event.currentTarget.lastElementChild.lastElementChild;
     if(event.currentTarget.message.value === "") {
@@ -114,7 +116,6 @@ function deleteMessageContainer(event) {
 }
 
 /* Edit message functions */
-
 function validateEditMessageForm(event) {
     let success_button = event.currentTarget.lastElementChild.lastElementChild.lastElementChild;
     if(event.currentTarget.post.value === "") {
@@ -216,7 +217,6 @@ function submitComment(event) {
 }
 
 /* Delete comment functions */
-
 function showDeleteCommnentModal(event) {
     let delete_comment_container = document.querySelector(".delete_comment_modal");
     delete_comment_container.querySelector("#delete_comment_form").comment_id.value = event.currentTarget.closest(".comment_container").id;
