@@ -1,6 +1,3 @@
-let close_buttons = document.querySelectorAll(".close_button");
-let cancel_buttons = document.querySelectorAll(".cancel_button");
-let modals = document.querySelectorAll(".modal");
 let create_message_button = document.querySelector("#create_message_button");
 let create_message_form = document.querySelector("#create_message_form");
 let messages_container = document.querySelector("#messages_container");
@@ -9,15 +6,15 @@ let messages_length = document.querySelector("#messages_length");
 let no_messages = document.querySelector("#no_messages");
 let comment_container = document.querySelector(".comment_container");
 
-for (let close_button of close_buttons) {
+for (let close_button of document.querySelectorAll(".close_button")) {
     close_button.addEventListener("click", closeModal);
 }
 
-for (let cancel_button of cancel_buttons) {
+for (let cancel_button of document.querySelectorAll(".cancel_button")) {
     cancel_button.addEventListener("click", closeModal);
 }
 
-for (let modal of modals) {
+for (let modal of document.querySelectorAll(".modal")) {
     modal.addEventListener("click", closeModalWhenClickedOutside);
 }
 
