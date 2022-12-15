@@ -1,4 +1,3 @@
-let create_message_button = document.querySelector("#create_message_button");
 let create_message_form = document.querySelector("#create_message_form");
 let messages_container = document.querySelector("#messages_container");
 let message_container = document.querySelector(".message_container");
@@ -18,7 +17,7 @@ for (let modal of document.querySelectorAll(".modal")) {
     modal.addEventListener("click", closeModalWhenClickedOutside);
 }
 
-create_message_button.addEventListener("click", openCreateMessageModal);
+document.querySelector("#create_message_button").addEventListener("click", openCreateMessageModal);
 create_message_form.addEventListener("keyup", validateFormMessage);
 create_message_form.addEventListener("submit", submitMessage);
 
