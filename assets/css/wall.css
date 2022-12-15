@@ -279,26 +279,37 @@ textarea {
   margin: 0;
   padding-left: 0;
 }
-.actions_container .message_actions li {
+.actions_container .message_actions > div,
+.actions_container .message_actions button {
+  border: none;
+  background-color: white;
   align-items: center;
   color: #707070;
   cursor: pointer;
   display: flex;
-  margin-right: 20px;
-}
-.actions_container .message_actions li img {
   margin-right: 5px;
 }
-.actions_container .message_actions li .blue_text {
+.actions_container .message_actions > div img,
+.actions_container .message_actions button img {
+  margin-right: 5px;
+}
+.actions_container .message_actions > div .blue_text,
+.actions_container .message_actions button .blue_text {
   color: #2c6bff;
 }
-.actions_container .message_actions li div span {
+.actions_container .message_actions > div > div,
+.actions_container .message_actions button > div {
+  text-align: left;
+}
+.actions_container .message_actions > div > div span,
+.actions_container .message_actions button > div span {
   font-weight: 900;
 }
-.actions_container .message_actions li:last-child {
+.actions_container .message_actions > div:last-child,
+.actions_container .message_actions button:last-child {
   cursor: auto;
 }
-.actions_container div {
+.actions_container .buttons_container {
   flex: 1;
   text-align: right;
 }

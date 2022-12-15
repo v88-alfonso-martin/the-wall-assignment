@@ -213,12 +213,15 @@ textarea{
         margin: 0;
         padding-left: 0;
 
-        li {
+        & > div,
+        button {
+            border: none;
+            background-color: white;
             align-items: center;
             color: @actions_font_color;
             cursor: pointer;
             display: flex;
-            margin-right: 20px;
+            margin-right: 5px;
             
             img {
                 margin-right: 5px;
@@ -228,7 +231,8 @@ textarea{
                 color: @primary_color;
             }
     
-            div {
+            & > div {
+                text-align: left;
                 span {
                     font-weight: 900;
                 }
@@ -240,7 +244,7 @@ textarea{
         }
     }
 
-    div {
+    .buttons_container {
         flex: 1;
         text-align: right;
     }
